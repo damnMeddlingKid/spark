@@ -84,7 +84,11 @@ abstract class UserDefinedType[UserType] extends DataType with Serializable {
 
   override def sql: String = sqlType.sql
 
+<<<<<<< c481bdf512f09060c9b9f341a5ce9fce00427d08
   override def equals(other: Any): Boolean = other match {
+=======
+  override def equals(other: Any) = other match {
+>>>>>>> test unionAll for udt dfs
     case that: UserDefinedType[_] => this.acceptsType(that)
     case _ => false
   }
