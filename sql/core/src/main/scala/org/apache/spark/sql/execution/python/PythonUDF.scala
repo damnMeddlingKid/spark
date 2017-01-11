@@ -33,6 +33,4 @@ case class PythonUDF(
   extends Expression with Unevaluable with NonSQLExpression {
 
   override def toString: String = s"$name(${children.mkString(", ")})"
-
-  override def nullable: Boolean = nullable
 }

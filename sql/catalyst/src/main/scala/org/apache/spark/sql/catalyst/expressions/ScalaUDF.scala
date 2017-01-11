@@ -44,8 +44,6 @@ case class ScalaUDF(
     nullable: Boolean = true)
   extends Expression with ImplicitCastInputTypes with NonSQLExpression {
 
-  override def nullable: Boolean = nullable
-
   override def toString: String = s"UDF(${children.mkString(", ")})"
 
   // scalastyle:off line.size.limit
