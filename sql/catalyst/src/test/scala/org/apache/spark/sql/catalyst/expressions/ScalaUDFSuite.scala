@@ -45,4 +45,7 @@ class ScalaUDFSuite extends SparkFunSuite with ExpressionEvalHelper {
     assert(e2.getMessage.contains("Failed to execute user defined function"))
   }
 
+  test("test nullability  assertion") {
+
+  }
 }

@@ -77,11 +77,7 @@ case class ScalaUDF(
     case 0 =>
       val func = function.asInstanceOf[() => Any]
       (input: InternalRow) => {
-        val res = func()
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
+        func()
       }
 
     case 1 =>
@@ -89,12 +85,8 @@ case class ScalaUDF(
       val child0 = children(0)
       lazy val converter0 = CatalystTypeConverters.createToScalaConverter(child0.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 2 =>
@@ -104,13 +96,9 @@ case class ScalaUDF(
       lazy val converter0 = CatalystTypeConverters.createToScalaConverter(child0.dataType)
       lazy val converter1 = CatalystTypeConverters.createToScalaConverter(child1.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 3 =>
@@ -122,14 +110,10 @@ case class ScalaUDF(
       lazy val converter1 = CatalystTypeConverters.createToScalaConverter(child1.dataType)
       lazy val converter2 = CatalystTypeConverters.createToScalaConverter(child2.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 4 =>
@@ -143,15 +127,11 @@ case class ScalaUDF(
       lazy val converter2 = CatalystTypeConverters.createToScalaConverter(child2.dataType)
       lazy val converter3 = CatalystTypeConverters.createToScalaConverter(child3.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)),
           converter3(child3.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 5 =>
@@ -167,16 +147,12 @@ case class ScalaUDF(
       lazy val converter3 = CatalystTypeConverters.createToScalaConverter(child3.dataType)
       lazy val converter4 = CatalystTypeConverters.createToScalaConverter(child4.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)),
           converter3(child3.eval(input)),
           converter4(child4.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 6 =>
@@ -194,17 +170,13 @@ case class ScalaUDF(
       lazy val converter4 = CatalystTypeConverters.createToScalaConverter(child4.dataType)
       lazy val converter5 = CatalystTypeConverters.createToScalaConverter(child5.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)),
           converter3(child3.eval(input)),
           converter4(child4.eval(input)),
           converter5(child5.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 7 =>
@@ -224,7 +196,7 @@ case class ScalaUDF(
       lazy val converter5 = CatalystTypeConverters.createToScalaConverter(child5.dataType)
       lazy val converter6 = CatalystTypeConverters.createToScalaConverter(child6.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)),
@@ -232,10 +204,6 @@ case class ScalaUDF(
           converter4(child4.eval(input)),
           converter5(child5.eval(input)),
           converter6(child6.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 8 =>
@@ -257,7 +225,7 @@ case class ScalaUDF(
       lazy val converter6 = CatalystTypeConverters.createToScalaConverter(child6.dataType)
       lazy val converter7 = CatalystTypeConverters.createToScalaConverter(child7.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)),
@@ -266,10 +234,6 @@ case class ScalaUDF(
           converter5(child5.eval(input)),
           converter6(child6.eval(input)),
           converter7(child7.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 9 =>
@@ -293,7 +257,7 @@ case class ScalaUDF(
       lazy val converter7 = CatalystTypeConverters.createToScalaConverter(child7.dataType)
       lazy val converter8 = CatalystTypeConverters.createToScalaConverter(child8.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)),
@@ -303,10 +267,6 @@ case class ScalaUDF(
           converter6(child6.eval(input)),
           converter7(child7.eval(input)),
           converter8(child8.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 10 =>
@@ -332,7 +292,7 @@ case class ScalaUDF(
       lazy val converter8 = CatalystTypeConverters.createToScalaConverter(child8.dataType)
       lazy val converter9 = CatalystTypeConverters.createToScalaConverter(child9.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)),
@@ -343,10 +303,6 @@ case class ScalaUDF(
           converter7(child7.eval(input)),
           converter8(child8.eval(input)),
           converter9(child9.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 11 =>
@@ -374,7 +330,7 @@ case class ScalaUDF(
       lazy val converter9 = CatalystTypeConverters.createToScalaConverter(child9.dataType)
       lazy val converter10 = CatalystTypeConverters.createToScalaConverter(child10.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)),
@@ -386,10 +342,6 @@ case class ScalaUDF(
           converter8(child8.eval(input)),
           converter9(child9.eval(input)),
           converter10(child10.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 12 =>
@@ -419,7 +371,7 @@ case class ScalaUDF(
       lazy val converter10 = CatalystTypeConverters.createToScalaConverter(child10.dataType)
       lazy val converter11 = CatalystTypeConverters.createToScalaConverter(child11.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)),
@@ -432,10 +384,6 @@ case class ScalaUDF(
           converter9(child9.eval(input)),
           converter10(child10.eval(input)),
           converter11(child11.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 13 =>
@@ -467,7 +415,7 @@ case class ScalaUDF(
       lazy val converter11 = CatalystTypeConverters.createToScalaConverter(child11.dataType)
       lazy val converter12 = CatalystTypeConverters.createToScalaConverter(child12.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)),
@@ -481,10 +429,6 @@ case class ScalaUDF(
           converter10(child10.eval(input)),
           converter11(child11.eval(input)),
           converter12(child12.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 14 =>
@@ -518,7 +462,7 @@ case class ScalaUDF(
       lazy val converter12 = CatalystTypeConverters.createToScalaConverter(child12.dataType)
       lazy val converter13 = CatalystTypeConverters.createToScalaConverter(child13.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)),
@@ -533,10 +477,6 @@ case class ScalaUDF(
           converter11(child11.eval(input)),
           converter12(child12.eval(input)),
           converter13(child13.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 15 =>
@@ -572,7 +512,7 @@ case class ScalaUDF(
       lazy val converter13 = CatalystTypeConverters.createToScalaConverter(child13.dataType)
       lazy val converter14 = CatalystTypeConverters.createToScalaConverter(child14.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)),
@@ -588,10 +528,6 @@ case class ScalaUDF(
           converter12(child12.eval(input)),
           converter13(child13.eval(input)),
           converter14(child14.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 16 =>
@@ -629,7 +565,7 @@ case class ScalaUDF(
       lazy val converter14 = CatalystTypeConverters.createToScalaConverter(child14.dataType)
       lazy val converter15 = CatalystTypeConverters.createToScalaConverter(child15.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)),
@@ -646,10 +582,6 @@ case class ScalaUDF(
           converter13(child13.eval(input)),
           converter14(child14.eval(input)),
           converter15(child15.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 17 =>
@@ -689,7 +621,7 @@ case class ScalaUDF(
       lazy val converter15 = CatalystTypeConverters.createToScalaConverter(child15.dataType)
       lazy val converter16 = CatalystTypeConverters.createToScalaConverter(child16.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)),
@@ -707,10 +639,6 @@ case class ScalaUDF(
           converter14(child14.eval(input)),
           converter15(child15.eval(input)),
           converter16(child16.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 18 =>
@@ -752,7 +680,7 @@ case class ScalaUDF(
       lazy val converter16 = CatalystTypeConverters.createToScalaConverter(child16.dataType)
       lazy val converter17 = CatalystTypeConverters.createToScalaConverter(child17.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)),
@@ -771,10 +699,6 @@ case class ScalaUDF(
           converter15(child15.eval(input)),
           converter16(child16.eval(input)),
           converter17(child17.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 19 =>
@@ -818,7 +742,7 @@ case class ScalaUDF(
       lazy val converter17 = CatalystTypeConverters.createToScalaConverter(child17.dataType)
       lazy val converter18 = CatalystTypeConverters.createToScalaConverter(child18.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)),
@@ -838,10 +762,6 @@ case class ScalaUDF(
           converter16(child16.eval(input)),
           converter17(child17.eval(input)),
           converter18(child18.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 20 =>
@@ -887,7 +807,7 @@ case class ScalaUDF(
       lazy val converter18 = CatalystTypeConverters.createToScalaConverter(child18.dataType)
       lazy val converter19 = CatalystTypeConverters.createToScalaConverter(child19.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)),
@@ -908,10 +828,6 @@ case class ScalaUDF(
           converter17(child17.eval(input)),
           converter18(child18.eval(input)),
           converter19(child19.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 21 =>
@@ -959,7 +875,7 @@ case class ScalaUDF(
       lazy val converter19 = CatalystTypeConverters.createToScalaConverter(child19.dataType)
       lazy val converter20 = CatalystTypeConverters.createToScalaConverter(child20.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)),
@@ -981,10 +897,6 @@ case class ScalaUDF(
           converter18(child18.eval(input)),
           converter19(child19.eval(input)),
           converter20(child20.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
 
     case 22 =>
@@ -1034,7 +946,7 @@ case class ScalaUDF(
       lazy val converter20 = CatalystTypeConverters.createToScalaConverter(child20.dataType)
       lazy val converter21 = CatalystTypeConverters.createToScalaConverter(child21.dataType)
       (input: InternalRow) => {
-        val res = func(
+        func(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)),
           converter2(child2.eval(input)),
@@ -1057,10 +969,6 @@ case class ScalaUDF(
           converter19(child19.eval(input)),
           converter20(child20.eval(input)),
           converter21(child21.eval(input)))
-        if(!nullable) {
-          assert(res != Nil, "Non nullable udf returned Nil")
-        }
-        res
       }
   }
 
