@@ -79,7 +79,7 @@ case class ScalaUDF(
       (input: InternalRow) => {
         val res = func()
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -92,7 +92,7 @@ case class ScalaUDF(
         val res = func(
           converter0(child0.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -108,7 +108,7 @@ case class ScalaUDF(
           converter0(child0.eval(input)),
           converter1(child1.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -127,7 +127,7 @@ case class ScalaUDF(
           converter1(child1.eval(input)),
           converter2(child2.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -149,7 +149,7 @@ case class ScalaUDF(
           converter2(child2.eval(input)),
           converter3(child3.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -174,7 +174,7 @@ case class ScalaUDF(
           converter3(child3.eval(input)),
           converter4(child4.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -202,7 +202,7 @@ case class ScalaUDF(
           converter4(child4.eval(input)),
           converter5(child5.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -233,7 +233,7 @@ case class ScalaUDF(
           converter5(child5.eval(input)),
           converter6(child6.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -267,7 +267,7 @@ case class ScalaUDF(
           converter6(child6.eval(input)),
           converter7(child7.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -304,7 +304,7 @@ case class ScalaUDF(
           converter7(child7.eval(input)),
           converter8(child8.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -344,7 +344,7 @@ case class ScalaUDF(
           converter8(child8.eval(input)),
           converter9(child9.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -387,7 +387,7 @@ case class ScalaUDF(
           converter9(child9.eval(input)),
           converter10(child10.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -433,7 +433,7 @@ case class ScalaUDF(
           converter10(child10.eval(input)),
           converter11(child11.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -482,7 +482,7 @@ case class ScalaUDF(
           converter11(child11.eval(input)),
           converter12(child12.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -534,7 +534,7 @@ case class ScalaUDF(
           converter12(child12.eval(input)),
           converter13(child13.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -589,7 +589,7 @@ case class ScalaUDF(
           converter13(child13.eval(input)),
           converter14(child14.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -647,7 +647,7 @@ case class ScalaUDF(
           converter14(child14.eval(input)),
           converter15(child15.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -708,7 +708,7 @@ case class ScalaUDF(
           converter15(child15.eval(input)),
           converter16(child16.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -772,7 +772,7 @@ case class ScalaUDF(
           converter16(child16.eval(input)),
           converter17(child17.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -839,7 +839,7 @@ case class ScalaUDF(
           converter17(child17.eval(input)),
           converter18(child18.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -909,7 +909,7 @@ case class ScalaUDF(
           converter18(child18.eval(input)),
           converter19(child19.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -982,7 +982,7 @@ case class ScalaUDF(
           converter19(child19.eval(input)),
           converter20(child20.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
@@ -1058,7 +1058,7 @@ case class ScalaUDF(
           converter20(child20.eval(input)),
           converter21(child21.eval(input)))
         if(!nullable) {
-          assert(res != Nil)
+          assert(res != Nil, "Non nullable udf returned Nil")
         }
         res
       }
