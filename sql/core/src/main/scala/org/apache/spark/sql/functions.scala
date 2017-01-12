@@ -3047,6 +3047,11 @@ object functions {
      */
     def udf[$typeTags](f: Function$x[$types]): UserDefinedFunction = {
       val inputTypes = Try($inputTypes).toOption
+      UserDefinedFunction(f, ScalaReflection.schemaFor(typeTag[RT]).dataType, inputTypes)
+    }
+
+    def udf[$typeTags](f: Function$x[$types], nullable: Boolean): UserDefinedFunction = {
+      val inputTypes = Try($inputTypes).toOption
       UserDefinedFunction(f, ScalaReflection.schemaFor(typeTag[RT]).dataType, inputTypes, nullable)
     }""")
   }*/
