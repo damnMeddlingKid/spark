@@ -40,10 +40,9 @@ case class ScalaUDF(
     function: AnyRef,
     dataType: DataType,
     children: Seq[Expression],
-    inputTypes: Seq[DataType] = Nil)
+    inputTypes: Seq[DataType] = Nil,
+    nullable: Boolean = true)
   extends Expression with ImplicitCastInputTypes with NonSQLExpression {
-
-  override def nullable: Boolean = true
 
   override def toString: String = s"UDF(${children.mkString(", ")})"
 
