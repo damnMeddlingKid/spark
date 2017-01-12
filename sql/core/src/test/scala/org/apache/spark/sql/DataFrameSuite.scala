@@ -536,6 +536,17 @@ class DataFrameSuite extends QueryTest with SharedSQLContext {
     )
   }
 
+  test("non nullable udf throws error on null") {
+    val df = Seq(("id1", 1), ("id2", 4), ("id3", 5)).toDF("id", "value")
+    val foo = udf((a: String, b: Int) => null, false)
+
+    val message = intercept[Exception] {
+      df.withColumn("nonNullable", foo('id, 'value)).collect()
+    }.getMessage
+
+    assert(message.contains("The 0th field 'nonNullable' of input row cannot be null"))
+  }
+
   test("callUDF without Hive Support") {
     val df = Seq(("id1", 1), ("id2", 4), ("id3", 5)).toDF("id", "value")
     df.sparkSession.udf.register("simpleUDF", (v: Int) => v * v)
